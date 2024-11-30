@@ -59,6 +59,30 @@ export default function HouseForm({ house, onClose, onSave }: HouseFormProps) {
     nearbyCoworking: false,
     privateVideocalls: false,
     storageSpace: false,
+    
+    // UBICACIÓN Y TRANSPORTE
+    metroDistance: 0,
+    busLines: 0,
+    groceryStores: false,
+    parkingAvailable: false,
+    bikeLines: false,
+    greenAreas: false,
+    
+    // SEGURIDAD Y ENTORNO
+    neighborhoodSecurity: 0,
+    streetLighting: 0,
+    trafficNoise: 0,
+    neighborhoodLife: 0,
+    commercialActivity: false,
+    
+    // COMUNIDAD Y EDIFICIO
+    doorman: false,
+    communityFees: 0,
+    neighborQuality: 0,
+    buildingMaintenance: 0,
+    communityAreas: false,
+    elevatorAvailable: false,
+    buildingAge: 0,
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -208,6 +232,80 @@ export default function HouseForm({ house, onClose, onSave }: HouseFormProps) {
           {renderCheckboxField('nearbyCoworking', '¿Hay espacios de coworking cercanos como alternativa?')}
           {renderCheckboxField('privateVideocalls', '¿La distribución permite videollamadas sin mostrar zonas privadas?')}
           {renderCheckboxField('storageSpace', '¿Hay suficiente espacio de almacenaje para equipamiento profesional?')}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Ubicación y Transporte</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="space-y-2">
+            <Label htmlFor="metroDistance">Distancia al metro (metros)</Label>
+            <Input
+              id="metroDistance"
+              type="number"
+              value={formData.metroDistance}
+              onChange={(e) => setFormData({...formData, metroDistance: Number(e.target.value)})}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="busLines">Número de líneas de bus cercanas</Label>
+            <Input
+              id="busLines"
+              type="number"
+              value={formData.busLines}
+              onChange={(e) => setFormData({...formData, busLines: Number(e.target.value)})}
+            />
+          </div>
+          {renderCheckboxField('groceryStores', '¿Hay tiendas de alimentación cercanas?')}
+          {renderCheckboxField('parkingAvailable', '¿Hay parking disponible?')}
+          {renderCheckboxField('bikeLines', '¿Hay carriles bici cercanos?')}
+          {renderCheckboxField('greenAreas', '¿Hay zonas verdes cercanas?')}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Seguridad y Entorno</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {renderSliderField('neighborhoodSecurity', 'Nivel de seguridad del barrio')}
+          {renderSliderField('streetLighting', 'Iluminación de la calle')}
+          {renderSliderField('trafficNoise', 'Nivel de ruido por tráfico')}
+          {renderSliderField('neighborhoodLife', 'Vida de barrio/ambiente')}
+          {renderCheckboxField('commercialActivity', '¿Hay actividad comercial en la zona?')}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Comunidad y Edificio</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {renderCheckboxField('doorman', '¿Tiene portero físico?')}
+          <div className="space-y-2">
+            <Label htmlFor="communityFees">Gastos de comunidad mensuales (€)</Label>
+            <Input
+              id="communityFees"
+              type="number"
+              value={formData.communityFees}
+              onChange={(e) => setFormData({...formData, communityFees: Number(e.target.value)})}
+            />
+          </div>
+          {renderSliderField('neighborQuality', 'Calidad del vecindario')}
+          {renderSliderField('buildingMaintenance', 'Mantenimiento del edificio')}
+          {renderCheckboxField('communityAreas', '¿Tiene zonas comunes?')}
+          {renderCheckboxField('elevatorAvailable', '¿Tiene ascensor?')}
+          <div className="space-y-2">
+            <Label htmlFor="buildingAge">Edad del edificio (años)</Label>
+            <Input
+              id="buildingAge"
+              type="number"
+              value={formData.buildingAge}
+              onChange={(e) => setFormData({...formData, buildingAge: Number(e.target.value)})}
+            />
+          </div>
         </CardContent>
       </Card>
 

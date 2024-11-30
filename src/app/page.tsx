@@ -1,6 +1,9 @@
 import { getHouses } from './actions';
 import HouseList from '@/components/HouseList';
 
+// Esto fuerza a que la página se renderice dinámicamente en cada petición
+export const dynamic = 'force-dynamic';
+
 export default async function Home() {
   const houses = await getHouses();
   

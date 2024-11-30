@@ -8,7 +8,8 @@ export async function getHouses(): Promise<House[]> {
   const client = await connectToDatabase();
   const collection = client.db(getDbName()).collection('houses');
   const houses = await collection.find({}).toArray();
-  return houses as unknown as House[];
+
+  return JSON.parse(JSON.stringify(houses)) as unknown as House[];
 }
 
 export async function addHouse(house: House) {
@@ -30,8 +31,8 @@ export async function updateHouse(id: string, house: House) {
   const collection = client.db(getDbName()).collection('houses');
   
   const score = calculateScore(house);
-  const {  ...houseWithoutId } = { ...house, score };
-  
+  const { _id,  ...houseWithoutId } = { ...house, score };
+  console.log(_id);
   const result = await collection.updateOne(
     { _id: new ObjectId(id) },
     { $set: houseWithoutId }
