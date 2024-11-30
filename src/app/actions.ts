@@ -1,54 +1,58 @@
 'use server'
 
-import { connectToDatabase } from '@/lib/mongodb';
+import { connectToDatabase, getDbName } from '@/lib/mongodb';
 import { House } from '@/types/house';
 import { ObjectId } from 'mongodb';
 
-export async function getHouses() {
+export async function getHouses(): Promise<House[]> {
   const client = await connectToDatabase();
-  const collection = client.db('casa').collection('houses');
-  return collection.find({}).toArray();
+  const collection = client.db(getDbName()).collection('houses');
+  const houses = await collection.find({}).toArray();
+  return houses as unknown as House[];
 }
 
 export async function addHouse(house: House) {
   const client = await connectToDatabase();
-  const collection = client.db('casa').collection('houses');
+  const collection = client.db(getDbName()).collection('houses');
   
   // Calcular la puntuación
   const score = calculateScore(house);
   const houseWithScore = { ...house, score };
   
-  const result = await collection.insertOne(houseWithScore);
+  const { _id, ...houseWithoutId } = houseWithScore;
+  console.log(_id);
+  const result = await collection.insertOne(houseWithoutId);
   return result;
 }
 
 export async function updateHouse(id: string, house: House) {
   const client = await connectToDatabase();
-  const collection = client.db('casa').collection('houses');
+  const collection = client.db(getDbName()).collection('houses');
   
   const score = calculateScore(house);
-  const houseWithScore = { ...house, score };
+  const {  ...houseWithoutId } = { ...house, score };
   
   const result = await collection.updateOne(
     { _id: new ObjectId(id) },
-    { $set: houseWithScore }
+    { $set: houseWithoutId }
   );
   return result;
 }
 
 export async function deleteHouse(id: string) {
   const client = await connectToDatabase();
-  const collection = client.db('casa').collection('houses');
+  const collection = client.db(getDbName()).collection('houses');
   
   const result = await collection.deleteOne({ _id: new ObjectId(id) });
   return result;
 }
 
-export async function getHouse(id: string) {
+export async function getHouse(id: string): Promise<House | null> {
   const client = await connectToDatabase();
-  const collection = client.db('casa').collection('houses');
+  const collection = client.db(getDbName()).collection('houses');
   
-  return collection.findOne({ _id: new ObjectId(id) });
+  const house = await collection.findOne({ _id: new ObjectId(id) });
+  return house as House | null;
 }
 
 function calculateScore(house: House): number {

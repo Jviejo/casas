@@ -2,12 +2,11 @@
 
 import { useRouter } from 'next/navigation';
 import HouseForm from '@/components/house/HouseForm';
-import { House } from '@/types/house';
 
 export default function AddHousePage() {
   const router = useRouter();
 
-  const handleSave = async (house: House) => {
+  const handleSave = async () => {
     router.push('/');
   };
 

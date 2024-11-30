@@ -18,7 +18,7 @@ export default function EditHousePage({ params }: { params: { id: string } }) {
     loadHouse();
   }, [params.id]);
 
-  const handleSave = async (house: House) => {
+  const handleSave = async () => {
     router.push('/');
   };
 

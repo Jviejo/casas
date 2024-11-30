@@ -31,6 +31,19 @@ export default function HouseForm({ house, onClose, onSave }: HouseFormProps) {
     mobileSignal: 0,
     noiseLevel: 0,
     hasBalcony: false,
+    customLighting: false,
+    ergonomicFurniture: false,
+    professionalSetup: false,
+    relaxationAreas: false,
+    screenReflectionFree: false,
+    plantsSpace: false,
+    electricalPower: false,
+    fiberOptic: false,
+    internetBackup: false,
+    neighborWorkStyle: false,
+    nearbyCoworking: false,
+    privateVideocalls: false,
+    storageSpace: false,
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
