@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+hacer una routa cliente que presente una lista de casas. La casa esta definida por un texto y tendra una puntuacion. Poner en la lista una Add para add una nueva casa y pedir los datos que aparecen en README. Aplicaremos una formula para calcular la nota. Tambien en la lista poner link a detalle y editar, asi como a borrar. Grabar la  informacion en un mongodb que esta en localhost en la database casa. No usar moongoose. El proyecto es typescrypt. Haremos actions para interactuar con funciones de servidor. Usar shadcn para los componentes. No usar api.
 
-## Getting Started
+para puntuar la casa, esto es lo que me dice chatgpt:
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+	1.	CALIDAD DE VIDA INTERIOR (3 puntos)
+	•	¿Hay una habitación/espacio específico para oficina? (1)
+	•	¿Cómo es el aislamiento acústico? (crucial para videollamadas) (1)
+	•	¿La conexión a internet es buena en la zona? (1)
+	2.	LUZ Y CONFORT TÉRMICO (2.5 puntos)
+	•	¿Tiene luz natural abundante? (reduce fatiga visual y mejora estado anímico) (1)
+	•	¿Buena ventilación natural? (0.75)
+	•	¿Sistema de climatización eficiente? (0.75)
+	3.	DISTRIBUCIÓN Y ESPACIO (2 puntos)
+	•	¿Permite separar zona de trabajo de zona de descanso? (0.75)
+	•	¿Hay espacio para moverse/estirar durante pausas? (0.5)
+	•	¿Espacios versátiles para cambiar de ambiente? (0.75)
+	4.	INSTALACIONES (1.5 puntos)
+	•	¿Suficientes enchufes y puntos de conexión? (0.5)
+	•	¿Instalación eléctrica preparada para equipos? (0.5)
+	•	¿Buena cobertura móvil? (0.5)
+	5.	ENTORNO INMEDIATO (1 punto)
+	•	¿Hay ruidos molestos que puedan interferir con llamadas? (0.5)
+	•	¿Tienes acceso a terraza/balcón para pausas? (0.5)
+Aspectos adicionales a considerar:
+	•	Posibilidad de personalizar la iluminación
+	•	Espacio para mobiliario ergonómico
+	•	Capacidad para crear un setup profesional
+	•	Zonas cercanas para desconectar en pausas
+	•	Orientación que evite reflejos en pantallas
+	•	Posibilidad de tener plantas (beneficiosas para el bienestar)
+Lo que pasa a ser menos prioritario:
+	•	Proximidad a transporte público
+	•	Cercanía a zonas de ocio
+	•	Instalaciones comunitarias
+	•	Distancia al centro de la ciudad
+Preguntas específicas para trabajo remoto:
+	1.	¿La potencia eléctrica contratada soportará equipos adicionales?
+	2.	¿Hay espacio para un setup ergonómico completo?
+	3.	¿Se puede instalar fibra óptica de alta velocidad?
+	4.	¿Hay alternativas de conexión a internet (4G/5G) como backup?
+	5.	¿Los vecinos también trabajan desde casa? (compatibilidad de horarios/ruidos)
+	6.	¿Hay espacios de coworking cercanos como alternativa?
+	7.	¿La distribución permite videollamadas sin mostrar zonas privadas?
+	8.	¿Hay suficiente espacio de almacenaje para equipamiento profesional?
+Recuerda que al pasar tanto tiempo en casa:
+	•	La calidad del aire interior es crucial
+	•	La ergonomía no es negociable
+	•	La separación entre espacio de trabajo y descanso es vital
+	•	La luz natural impacta directamente en tu productividad
+	•	El aislamiento acústico es más importante que nunca
+	•	La flexibilidad de los espacios te permitirá adaptarte mejor
