@@ -44,6 +44,24 @@ export default function HouseForm({ house, onClose, onSave }: HouseFormProps) {
     nearbyCoworking: false,
     privateVideocalls: false,
     storageSpace: false,
+    metroDistance: 0,
+    busLines: 0,
+    groceryStores: false,
+    parkingAvailable: false,
+    bikeLines: false,
+    greenAreas: false,
+    neighborhoodSecurity: 0,
+    streetLighting: 0,
+    trafficNoise: 0,
+    neighborhoodLife: 0,
+    commercialActivity: false,
+    doorman: false,
+    communityFees: 0,
+    neighborQuality: 0,
+    buildingMaintenance: 0,
+    communityAreas: false,
+    elevatorAvailable: false,
+    buildingAge: 0
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
